@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SILIADIN Yaovi Blewoussi | FRESEN-TRANS & UPRAD</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandBlue: '#1D4ED8',
+                        brandHover: '#1E40AF',
+                        brandLight: '#EFF6FF',
+                        darkNavy: '#0B132B',
+                        darkCard: '#111A35',
+                        darkBorder: '#1E293B',
+                        accentCyan: '#38BDF8',
+                        bgLight: '#F4F6FB'
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 30px -5px rgba(29, 78, 216, 0.08)',
+                        'glow': '0 0 25px rgba(29, 78, 216, 0.3)',
+                        'card': '0 20px 40px -15px rgba(0, 0, 0, 0.07)'
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #F4F6FB;
+            color: #1E293B;
+            overflow-x: hidden;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F4F6FB;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #94A3B8;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #1D4ED8;
+        }
+
+        .card-tilt {
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .card-tilt:hover {
+            transform: translateY(-6px) scale(1.01);
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+            50% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
+        }
+        .status-pulse {
+            animation: pulseGlow 2s infinite;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-brandBlue selection:text-white">
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/80 transition-all duration-300 shadow-sm" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Logo -->
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-brandBlue ring-2 ring-brandBlue/20 shadow-lg shadow-brandBlue/30 group-hover:scale-105 transition-transform bg-slate-900 flex items-center justify-center shrink-0">
+                    <img src="logo.jpg" alt="Logo STE FRESEN-TRANS" class="w-full h-full object-cover">
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-extrabold text-slate-900 text-sm tracking-wide uppercase leading-tight group-hover:text-brandBlue transition-colors">
+                        FRESEN-TRANS
+                    </span>
+                    <span class="text-[11px] font-semibold text-brandBlue tracking-wider">
+                        & UPRAD TOGO
+                    </span>
+                </div>
+            </a>
+
+            <!-- Desktop Menu -->
+            <nav class="hidden md:flex items-center space-x-8 text-xs font-bold uppercase tracking-wider text-slate-600">
+                <a href="#accueil" class="hover:text-brandBlue transition-colors py-2 border-b-2 border-transparent hover:border-brandBlue">Accueil</a>
+                <a href="#expertises" class="hover:text-brandBlue transition-colors py-2 border-b-2 border-transparent hover:border-brandBlue">Activités & Expertises</a>
+                <a href="#mandats" class="hover:text-brandBlue transition-colors py-2 border-b-2 border-transparent hover:border-brandBlue">Mandats Institutionnels</a>
+                <a href="#approche" class="hover:text-brandBlue transition-colors py-2 border-b-2 border-transparent hover:border-brandBlue">Notre Approche</a>
+                <a href="#apropos" class="hover:text-brandBlue transition-colors py-2 border-b-2 border-transparent hover:border-brandBlue">À Propos</a>
+                <a href="#contact" class="hover:text-brandBlue transition-colors py-2 border-b-2 border-transparent hover:border-brandBlue">Contact</a>
+            </nav>
+
+            <!-- Actions -->
+            <div class="flex items-center space-x-3">
+                <button onclick="openModal('quoteModal')" class="hidden sm:inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-brandBlue hover:bg-brandHover text-white text-xs font-bold uppercase tracking-wider shadow-lg shadow-brandBlue/25 transition-all transform hover:-translate-y-0.5 active:translate-y-0">
+                    <i class="fa-solid fa-paper-plane mr-2"></i> DÉMARRER
+                </button>
+                <button id="mobile-menu-btn" class="md:hidden text-slate-700 hover:text-brandBlue p-2 focus:outline-none" aria-label="Menu Mobile">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-6 pt-4 pb-6 space-y-4 shadow-xl">
+            <a href="#accueil" onclick="toggleMobileMenu()" class="block py-2 text-sm font-bold text-slate-700 hover:text-brandBlue">Accueil</a>
+            <a href="#expertises" onclick="toggleMobileMenu()" class="block py-2 text-sm font-bold text-slate-700 hover:text-brandBlue">Activités & Expertises</a>
+            <a href="#mandats" onclick="toggleMobileMenu()" class="block py-2 text-sm font-bold text-slate-700 hover:text-brandBlue">Mandats Institutionnels</a>
+            <a href="#approche" onclick="toggleMobileMenu()" class="block py-2 text-sm font-bold text-slate-700 hover:text-brandBlue">Notre Approche</a>
+            <a href="#apropos" onclick="toggleMobileMenu()" class="block py-2 text-sm font-bold text-slate-700 hover:text-brandBlue">À Propos</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block py-2 text-sm font-bold text-slate-700 hover:text-brandBlue">Contact</a>
+            <button onclick="toggleMobileMenu(); openModal('quoteModal');" class="w-full py-3 rounded-full bg-brandBlue text-white font-bold text-xs uppercase tracking-wider shadow-md">
+                <i class="fa-solid fa-paper-plane mr-2"></i> Demander un Devis
+            </button>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="accueil" class="pt-32 pb-20 lg:pt-36 lg:pb-28 bg-[#F4F6FB] relative overflow-hidden">
+        <div class="absolute top-10 right-10 w-96 h-96 bg-blue-200/40 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-10 left-10 w-80 h-80 bg-cyan-200/30 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Hero Text -->
+                <div class="lg:col-span-7 space-y-6">
+                    
+                    <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-slate-200/70 border border-slate-300 text-slate-700 text-xs font-bold tracking-wider uppercase">
+                        <span class="w-2 h-2 rounded-full bg-brandBlue animate-ping"></span>
+                        <span>SILIADIN Yaovi Blewoussi • FRESEN-TRANS & UPRAD</span>
+                    </div>
+
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-[1.15]">
+                        Libérez le potentiel de votre entreprise grâce au <span class="text-brandBlue">conseil stratégique</span> & douanier
+                    </h1>
+
+                    <!-- Verbatim Profile Summary -->
+                    <div class="bg-white/80 backdrop-blur-sm border border-slate-200 rounded-2xl p-5 space-y-2 text-sm text-slate-700 shadow-sm">
+                        <p class="font-extrabold text-slate-900 text-base">
+                            SILIADIN Yaovi Blewoussi
+                        </p>
+                        <p class="font-bold text-brandBlue">
+                            Directeur de la société FRESEN-TRANS
+                        </p>
+                        <ul class="space-y-1.5 text-xs text-slate-600 pt-1">
+                            <li class="flex items-start space-x-2">
+                                <span class="text-brandBlue font-bold">■</span>
+                                <span><strong>Commissionnaire en Douanes agréé</strong></span>
+                            </li>
+                            <li class="flex items-start space-x-2">
+                                <span class="text-brandBlue font-bold">■</span>
+                                <span><strong>Membre du Bureau Exécutif de l'UPRAD</strong> (Secrétaire Général Adjoint) : Union Professionnelle des Agréés en Douane du Togo, qui est membre de la <strong>FIATA</strong> (Fédération Internationale des Associations de Transitaires et Assimilés).</span>
+                            </li>
+                            <li class="flex items-start space-x-2">
+                                <span class="text-brandBlue font-bold">■</span>
+                                <span><strong>Membre du CNF</strong> : Comité National de Facilitation des Transports.</span>
+                            </li>
+                            <li class="flex items-start space-x-2">
+                                <span class="text-brandBlue font-bold">■</span>
+                                <span><strong>Acteur du Comité Technique</strong> de facilitation des échanges et de la <strong>ZLECAF</strong>.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Search Input -->
+                    <div class="relative max-w-xl pt-2">
+                        <div class="flex items-center bg-white border border-slate-200 rounded-full p-2 shadow-soft hover:shadow-md transition-shadow">
+                            <i class="fa-solid fa-magnifying-glass text-slate-400 text-sm ml-4 mr-3"></i>
+                            <input 
+                                type="text" 
+                                id="heroSearchInput" 
+                                oninput="handleSearch(this.value)"
+                                placeholder="Comment pouvons-nous vous aider ?" 
+                                class="w-full bg-transparent text-sm text-slate-800 placeholder-slate-400 focus:outline-none font-medium"
+                                autocomplete="off"
+                            >
+                            <button onclick="executeHeroSearch()" class="px-7 py-3 rounded-full bg-brandBlue hover:bg-brandHover text-white font-bold text-xs uppercase tracking-wider transition-all shadow-md shadow-brandBlue/30 shrink-0">
+                                DÉMARRER
+                            </button>
+                        </div>
+
+                        <div id="searchDropdown" class="hidden absolute top-full left-0 right-0 mt-2 bg-white border border-slate-200 rounded-2xl shadow-2xl z-40 max-h-72 overflow-y-auto divide-y divide-slate-100 p-2"></div>
+                    </div>
+
+                </div>
+
+                <!-- Right 3D Business Card Widget -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="w-full max-w-md relative">
+                        <div class="absolute -top-12 -right-8 w-28 h-28 bg-gradient-to-tr from-brandBlue to-cyan-400 rounded-full blur-sm opacity-80 shadow-2xl pointer-events-none animate-bounce" style="animation-duration: 6s;"></div>
+                        
+                        <div class="bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-7 shadow-2xl card-tilt relative z-10">
+                            
+                            <!-- Tabs -->
+                            <div class="flex bg-slate-100 p-1.5 rounded-2xl mb-6 border border-slate-200">
+                                <button onclick="switchHeroCard('fresen')" id="heroTabFresen" class="flex-1 py-2.5 px-3 rounded-xl font-bold text-xs transition-all bg-white text-brandBlue shadow-sm">
+                                    <i class="fa-solid fa-ship mr-1.5"></i> FRESEN-TRANS
+                                </button>
+                                <button onclick="switchHeroCard('uprad')" id="heroTabUprad" class="flex-1 py-2.5 px-3 rounded-xl font-bold text-xs transition-all text-slate-600 hover:text-slate-900">
+                                    <i class="fa-solid fa-building-columns mr-1.5"></i> UPRAD / FIATA
+                                </button>
+                            </div>
+
+                            <!-- CARD CONTENT: FRESEN-TRANS -->
+                            <div id="heroCardFresen" class="space-y-5 transition-opacity duration-300">
+                                <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-brandBlue/20 shadow-md shadow-brandBlue/30 bg-white flex items-center justify-center shrink-0">
+                                            <img src="logo.jpg" alt="Logo STE FRESEN-TRANS" class="w-full h-full object-cover">
+                                        </div>
+                                        <div>
+                                            <h3 class="font-extrabold text-slate-900 text-base leading-tight">STE FRESEN-TRANS SARL U</h3>
+                                            <span class="text-xs text-brandBlue font-semibold">Commissionnaire en Douane Agréé</span>
+                                        </div>
+                                    </div>
+                                    <span class="w-3 h-3 rounded-full bg-emerald-500 status-pulse"></span>
+                                </div>
+
+                                <div class="space-y-3 text-xs text-slate-600 bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                                    <div class="flex items-center justify-between border-b border-slate-200/60 pb-2">
+                                        <span class="font-medium text-slate-500">Directeur Général :</span>
+                                        <span class="font-bold text-slate-900">Yaovi Blewoussi SILIADIN</span>
+                                    </div>
+                                    <div class="flex items-start space-x-2">
+                                        <i class="fa-solid fa-briefcase text-brandBlue mt-0.5"></i>
+                                        <span>Toutes opérations de Transit-Négoce, Import-Export & Logistique</span>
+                                    </div>
+                                    <div class="flex items-start space-x-2">
+                                        <i class="fa-solid fa-location-dot text-brandBlue mt-0.5"></i>
+                                        <span>67, Rue Kotokou Kondji, non loin du CEG d'Ablogamé, B.P. : 20 309 Lomé - TOGO</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <i class="fa-solid fa-envelope text-brandBlue"></i>
+                                        <a href="mailto:fresentrans@gmail.com" class="hover:text-brandBlue font-semibold underline">fresentrans@gmail.com</a>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <i class="fa-solid fa-phone text-brandBlue"></i>
+                                        <span class="font-semibold text-slate-800">(+228) 90 28 63 19 / 98 11 95 75</span>
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-2 gap-3 pt-1">
+                                    <a href="https://wa.me/22891692987" target="_blank" class="py-2.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs text-center shadow-md shadow-emerald-600/20 flex items-center justify-center space-x-2 transition-all">
+                                        <i class="fa-brands fa-whatsapp text-sm"></i>
+                                        <span>WhatsApp</span>
+                                    </a>
+                                    <button onclick="openModal('quoteModal')" class="py-2.5 px-4 rounded-xl bg-brandBlue hover:bg-brandHover text-white font-bold text-xs text-center shadow-md shadow-brandBlue/20 flex items-center justify-center space-x-2 transition-all">
+                                        <i class="fa-solid fa-calculator text-xs"></i>
+                                        <span>Devis Transit</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- CARD CONTENT: UPRAD -->
+                            <div id="heroCardUprad" class="hidden space-y-5 transition-opacity duration-300">
+                                <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-emerald-600/20 shadow-md shadow-emerald-700/20 bg-white flex items-center justify-center shrink-0">
+                                            <img src="fiata-logo.png" alt="Logo FIATA International" class="w-full h-full object-contain p-0.5">
+                                        </div>
+                                        <div>
+                                            <h3 class="font-extrabold text-slate-900 text-base leading-tight">UPRAD-TOGO</h3>
+                                            <span class="text-xs text-emerald-600 font-semibold">Union Professionnelle des Agréés en Douanes</span>
+                                        </div>
+                                    </div>
+                                    <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-extrabold">MEMBRE FIATA</span>
+                                </div>
+
+                                <div class="space-y-3 text-xs text-slate-600 bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                                    <div class="flex items-center justify-between border-b border-slate-200/60 pb-2">
+                                        <span class="font-medium text-slate-500">Secrétaire Général Adjoint :</span>
+                                        <span class="font-bold text-slate-900">Yaovi Blewoussi SILIADIN</span>
+                                    </div>
+                                    <div class="flex items-start space-x-2">
+                                        <i class="fa-solid fa-handshake-angle text-emerald-600 mt-0.5"></i>
+                                        <span>Membre du Comité National de la facilitation des Transports (CNF)</span>
+                                    </div>
+                                    <div class="flex items-start space-x-2">
+                                        <i class="fa-solid fa-location-dot text-emerald-600 mt-0.5"></i>
+                                        <span>Avenue Mobutu Sesse Seko (rue prolongée du grand moulin), Lomé - Togo</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <i class="fa-solid fa-globe text-emerald-600"></i>
+                                        <a href="http://www.uprad-togo.com" target="_blank" class="hover:text-emerald-600 font-semibold underline">www.uprad-togo.com</a>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <i class="fa-solid fa-envelope text-emerald-600"></i>
+                                        <span class="font-semibold text-slate-800">secretariatuprad@gmail.com</span>
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-2 gap-3 pt-1">
+                                    <a href="https://wa.me/22891692987" target="_blank" class="py-2.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs text-center shadow-md shadow-emerald-600/20 flex items-center justify-center space-x-2 transition-all">
+                                        <i class="fa-brands fa-whatsapp text-sm"></i>
+                                        <span>Secrétariat UPRAD</span>
+                                    </a>
+                                    <a href="mailto:secretariatuprad@gmail.com" class="py-2.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-900 text-white font-bold text-xs text-center shadow-md flex items-center justify-center space-x-2 transition-all">
+                                        <i class="fa-solid fa-envelope text-xs"></i>
+                                        <span>Courriel</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- STRATEGIC LOGOS & ACCREDITATIONS BANNER -->
+    <div class="bg-slate-900 text-white py-10 border-y border-slate-800 shadow-2xl relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-6">
+                <span class="text-[11px] font-extrabold uppercase tracking-widest text-accentCyan bg-blue-950/80 px-4 py-1.5 rounded-full border border-blue-800/50 inline-block shadow">
+                    <i class="fa-solid fa-award text-yellow-400 mr-1.5"></i> ACCRÉDITATIONS & ANCRAGE INTERNATIONAL
+                </span>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center justify-center gap-8">
+                
+                <!-- FRESEN-TRANS LOGO CARD -->
+                <div class="flex items-center space-x-5 bg-slate-800/90 border border-brandBlue/40 p-5 rounded-3xl max-w-md w-full shadow-glow hover:scale-[1.02] transition-all duration-300 group">
+                    <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-brandBlue ring-4 ring-brandBlue/20 shrink-0 bg-slate-950 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
+                        <img src="logo.jpg" alt="Logo STE FRESEN-TRANS" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <div class="flex items-center space-x-2 mb-0.5">
+                            <h4 class="font-extrabold text-white text-base tracking-wide uppercase">STE FRESEN-TRANS</h4>
+                            <span class="px-2 py-0.5 rounded-md bg-brandBlue text-white text-[9px] font-extrabold uppercase">AGRÉÉ</span>
+                        </div>
+                        <p class="text-xs text-blue-300 font-semibold">Commissionnaire en Douane Agréé (Togo)</p>
+                        <p class="text-[11px] text-slate-400 mt-1">Dédouanement maritime, terrestre, aérien, consignation & logistique.</p>
+                    </div>
+                </div>
+
+                <!-- FIATA LOGO CARD -->
+                <div class="flex items-center space-x-5 bg-slate-800/90 border border-emerald-500/40 p-5 rounded-3xl max-w-md w-full shadow-lg hover:scale-[1.02] transition-all duration-300 group">
+                    <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-emerald-400 ring-4 ring-emerald-500/20 shrink-0 bg-white p-1.5 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
+                        <img src="fiata-logo.png" alt="Logo FIATA International" class="w-full h-full object-contain">
+                    </div>
+                    <div>
+                        <div class="flex items-center space-x-2 mb-0.5">
+                            <h4 class="font-extrabold text-white text-base tracking-wide uppercase">FIATA INTERNATIONAL</h4>
+                            <span class="px-2 py-0.5 rounded-md bg-emerald-600 text-white text-[9px] font-extrabold uppercase">MEMBRE</span>
+                        </div>
+                        <p class="text-xs text-emerald-400 font-semibold">Fédération Internationale des Transitaires</p>
+                        <p class="text-[11px] text-slate-400 mt-1">Via l'UPRAD Togo (Union Professionnelle des Agréés en Douane).</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 1: RENCONTREZ-VOUS CES DÉFIS ? -->
+    <section class="py-20 bg-white border-y border-slate-200/80 reveal">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                    Rencontrez-vous ces défis ?
+                </h2>
+                <p class="text-slate-500 mt-3 text-sm sm:text-base">
+                    Nous apportons des solutions concrètes à toutes vos exigences de dédouanement, de transport et de logistique.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <div class="bg-slate-50/80 border border-slate-200/90 rounded-3xl p-8 hover:bg-white hover:shadow-xl transition-all duration-300 card-tilt group">
+                    <div class="w-12 h-12 rounded-2xl bg-brandBlue/10 text-brandBlue flex items-center justify-center text-xl mb-6 group-hover:bg-brandBlue group-hover:text-white transition-colors shadow-sm">
+                        <i class="fa-solid fa-ship"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-3">Complexités de dédouanement</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Difficultés à réaliser les formalités de dédouanement des marchandises par voie maritime, terrestre et aérienne.
+                    </p>
+                </div>
+
+                <div class="bg-slate-50/80 border border-slate-200/90 rounded-3xl p-8 hover:bg-white hover:shadow-xl transition-all duration-300 card-tilt group">
+                    <div class="w-12 h-12 rounded-2xl bg-brandBlue/10 text-brandBlue flex items-center justify-center text-xl mb-6 group-hover:bg-brandBlue group-hover:text-white transition-colors shadow-sm">
+                        <i class="fa-solid fa-truck-ramp-box"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-3">Gestion Logistique & Manutention</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Optimisation nécessaire pour le transport, la consignation maritime, la manutention et la fluidité des flux.
+                    </p>
+                </div>
+
+                <div class="bg-slate-50/80 border border-slate-200/90 rounded-3xl p-8 hover:bg-white hover:shadow-xl transition-all duration-300 card-tilt group">
+                    <div class="w-12 h-12 rounded-2xl bg-brandBlue/10 text-brandBlue flex items-center justify-center text-xl mb-6 group-hover:bg-brandBlue group-hover:text-white transition-colors shadow-sm">
+                        <i class="fa-solid fa-diagram-project"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-3">Conformité ZLECAF & Projets</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Besoin d'un assistant en élaboration et gestion de projets ainsi que de formations et conseils en commerce général.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: LES ACTIVITÉS & EXPERTISES (Strictly Verbatim Activities) -->
+    <section id="expertises" class="py-20 bg-[#F4F6FB] reveal">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-brandBlue font-bold text-xs uppercase tracking-wider">DOMAINES D'INTERVENTION</span>
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-1">
+                    Les Activités FRESEN-TRANS
+                </h2>
+                <p class="text-slate-600 text-sm mt-2">
+                    <strong>Commissionnaire en Douane Agréé</strong> — Spécialiste et conseiller dans toutes vos opérations.
+                </p>
+            </div>
+
+            <!-- Dark Container Showcase Box -->
+            <div class="bg-[#0B132B] rounded-3xl p-8 sm:p-12 shadow-2xl border border-slate-800 text-white relative overflow-hidden">
+                
+                <div class="space-y-8 divide-y divide-slate-800/80">
+                    
+                    <!-- Item 1: Dédouanement -->
+                    <div class="pt-6 first:pt-0 grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+                        <div class="md:col-span-1 flex justify-start">
+                            <div class="w-12 h-12 rounded-full bg-brandBlue/20 border border-brandBlue/40 text-accentCyan flex items-center justify-center text-xl shadow-glow">
+                                <i class="fa-solid fa-file-contract"></i>
+                            </div>
+                        </div>
+                        <div class="md:col-span-4">
+                            <h3 class="text-lg font-bold text-white">Formalités de Dédouanement</h3>
+                            <span class="text-xs text-accentCyan font-semibold">Maritime, Terrestre & Aérien</span>
+                        </div>
+                        <div class="md:col-span-7">
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Formalités de dédouanement des marchandises par voie maritime, terrestre et aérienne ; bref toutes les opérations de transit et négoce.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item 2: Transport & Logistique -->
+                    <div class="pt-6 grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+                        <div class="md:col-span-1 flex justify-start">
+                            <div class="w-12 h-12 rounded-full bg-brandBlue/20 border border-brandBlue/40 text-accentCyan flex items-center justify-center text-xl shadow-glow">
+                                <i class="fa-solid fa-truck-fast"></i>
+                            </div>
+                        </div>
+                        <div class="md:col-span-4">
+                            <h3 class="text-lg font-bold text-white">Transport & Logistique</h3>
+                        </div>
+                        <div class="md:col-span-7">
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Organisation complète des flux de transport et solutions de chaîne logistique intégrées.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item 3: Consignation & Manutention -->
+                    <div class="pt-6 grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+                        <div class="md:col-span-1 flex justify-start">
+                            <div class="w-12 h-12 rounded-full bg-brandBlue/20 border border-brandBlue/40 text-accentCyan flex items-center justify-center text-xl shadow-glow">
+                                <i class="fa-solid fa-boxes-packing"></i>
+                            </div>
+                        </div>
+                        <div class="md:col-span-4">
+                            <h3 class="text-lg font-bold text-white">Consignation & Manutention</h3>
+                        </div>
+                        <div class="md:col-span-7">
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Services de consignation maritime et manutention portuaire sécurisée.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item 4: Commerce Général & Formation -->
+                    <div class="pt-6 grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+                        <div class="md:col-span-1 flex justify-start">
+                            <div class="w-12 h-12 rounded-full bg-brandBlue/20 border border-brandBlue/40 text-accentCyan flex items-center justify-center text-xl shadow-glow">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                            </div>
+                        </div>
+                        <div class="md:col-span-4">
+                            <h3 class="text-lg font-bold text-white">Commerce Général & Formation</h3>
+                        </div>
+                        <div class="md:col-span-7">
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Négoce, activités de commerce général et modules de formation professionnelle.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item 5: Élaboration & Gestion de Projets -->
+                    <div class="pt-6 grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+                        <div class="md:col-span-1 flex justify-start">
+                            <div class="w-12 h-12 rounded-full bg-brandBlue/20 border border-brandBlue/40 text-accentCyan flex items-center justify-center text-xl shadow-glow">
+                                <i class="fa-solid fa-chart-gantt"></i>
+                            </div>
+                        </div>
+                        <div class="md:col-span-4">
+                            <h3 class="text-lg font-bold text-white">Assistant en Élaboration & Gestion de Projets</h3>
+                        </div>
+                        <div class="md:col-span-7">
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Accompagnement technique, assistance au montage et pilotage stratégique de projets logistiques et industriels.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Bottom Blue Banner -->
+                <div id="mandats" class="mt-10 pt-6 border-t border-slate-800">
+                    <div class="bg-brandBlue rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
+                        <div>
+                            <h4 class="text-xl font-extrabold text-white">Consultation & Cotation offerte</h4>
+                            <p class="text-blue-100 text-xs sm:text-sm mt-1">Obtenez une étude personnalisée de votre dossier de transit ou de votre projet.</p>
+                        </div>
+                        <button onclick="openModal('quoteModal')" class="px-7 py-3.5 rounded-full bg-white hover:bg-slate-100 text-brandBlue font-extrabold text-xs uppercase tracking-wider transition-all shadow-lg flex items-center space-x-2 shrink-0">
+                            <span>RÉSERVER MAINTENANT</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: MANDATS INSTITUTIONNELS (Verbatim Specs) -->
+    <section class="py-20 bg-white reveal">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brandBlue font-bold text-xs uppercase tracking-wider">REPRÉSENTATION INSTITUTIONNELLE</span>
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-1">
+                    Mandats & Engagements
+                </h2>
+                <p class="text-slate-600 text-sm mt-2">
+                    Une présence active dans les hautes instances de facilitation du commerce au Togo et à l'international.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- Mandat UPRAD / FIATA -->
+                <div class="bg-slate-50 border border-slate-200 rounded-3xl p-8 card-tilt flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center space-x-3 mb-6">
+                            <div class="w-14 h-14 rounded-2xl bg-white border-2 border-emerald-500/30 shadow-md p-1.5 flex items-center justify-center shrink-0">
+                                <img src="fiata-logo.png" alt="Logo FIATA International" class="w-full h-full object-contain">
+                            </div>
+                            <div class="w-14 h-14 rounded-2xl bg-slate-900 border-2 border-brandBlue/30 shadow-md overflow-hidden flex items-center justify-center shrink-0">
+                                <img src="logo.jpg" alt="Logo STE FRESEN-TRANS" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-extrabold text-slate-900 mb-1">UPRAD Togo & FIATA</h3>
+                        <p class="text-xs font-bold text-emerald-600 uppercase mb-4">Secrétaire Général Adjoint — Membre du Bureau Exécutif</p>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Membre du Bureau Exécutif de l'<strong>UPRAD</strong> (Union Professionnelle des Agréés en Douane du Togo), qui est membre de la <strong>FIATA</strong> (Fédération Internationale des Associations de Transitaires et Assimilés).
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500 font-semibold">
+                        <span>Standard & Éthique Douanière</span>
+                        <span class="text-emerald-700">FIATA Member</span>
+                    </div>
+                </div>
+
+                <!-- Mandat CNF & ZLECAF -->
+                <div class="bg-slate-50 border border-slate-200 rounded-3xl p-8 card-tilt flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-blue-100 text-brandBlue flex items-center justify-center text-xl mb-6">
+                            <i class="fa-solid fa-globe"></i>
+                        </div>
+                        <h3 class="text-xl font-extrabold text-slate-900 mb-1">CNF & ZLECAF</h3>
+                        <p class="text-xs font-bold text-brandBlue uppercase mb-4">Membre CNF & Comité Technique</p>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            <strong>Membre du CNF</strong> (Comité National de Facilitation des Transports) et <strong>Acteur du Comité Technique</strong> de facilitation des échanges et de la <strong>ZLECAF</strong> (Zone de Libre-Échange Continentale Africaine).
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500 font-semibold">
+                        <span>Fluidification Transfrontalière</span>
+                        <span class="text-brandBlue">CNF / ZLECAF</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: NOTRE APPROCHE -->
+    <section id="approche" class="py-24 bg-[#F4F6FB] reveal">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="inline-block px-3 py-1 rounded-full bg-blue-50 text-brandBlue text-xs font-bold uppercase tracking-wider">
+                        MÉTHODE DE TRAVAIL
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                        Notre approche
+                    </h2>
+                    <p class="text-slate-600 text-base leading-relaxed">
+                        Une méthode claire, transparente et humaine pour transformer vos ambitions et projets en résultats.
+                    </p>
+
+                    <div id="stepDetailBox" class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm">
+                        <div class="flex items-center space-x-3 text-brandBlue mb-2">
+                            <span id="stepNumberBadge" class="w-8 h-8 rounded-full bg-brandBlue text-white font-bold text-xs flex items-center justify-center">01</span>
+                            <h4 id="stepTitle" class="text-lg font-bold text-slate-900">Comprendre vos besoins</h4>
+                        </div>
+                        <p id="stepDescription" class="text-slate-600 text-sm leading-relaxed">
+                            Nous analysons vos enjeux, vos objectifs et votre contexte logistique et douanier.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7">
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 relative">
+                        <div class="hidden sm:block absolute top-6 left-12 right-12 h-0.5 bg-slate-200 z-0"></div>
+
+                        <button onclick="activateStep(1)" id="stepBtn-1" class="relative z-10 flex flex-col items-center text-center group cursor-pointer">
+                            <div id="stepIcon-1" class="w-12 h-12 rounded-full bg-brandBlue text-white font-bold text-sm flex items-center justify-center shadow-lg shadow-brandBlue/30 transition-transform group-hover:scale-110">
+                                01
+                            </div>
+                            <h4 class="font-bold text-slate-900 text-sm mt-4">Comprendre</h4>
+                            <p class="text-slate-500 text-xs mt-1">Analyse des enjeux et du contexte.</p>
+                        </button>
+
+                        <button onclick="activateStep(2)" id="stepBtn-2" class="relative z-10 flex flex-col items-center text-center group cursor-pointer">
+                            <div id="stepIcon-2" class="w-12 h-12 rounded-full bg-white border-2 border-slate-300 text-slate-600 font-bold text-sm flex items-center justify-center transition-transform group-hover:scale-110">
+                                02
+                            </div>
+                            <h4 class="font-bold text-slate-900 text-sm mt-4">Concevoir</h4>
+                            <p class="text-slate-500 text-xs mt-1">Stratégie sur mesure et réaliste.</p>
+                        </button>
+
+                        <button onclick="activateStep(3)" id="stepBtn-3" class="relative z-10 flex flex-col items-center text-center group cursor-pointer">
+                            <div id="stepIcon-3" class="w-12 h-12 rounded-full bg-white border-2 border-slate-300 text-slate-600 font-bold text-sm flex items-center justify-center transition-transform group-hover:scale-110">
+                                03
+                            </div>
+                            <h4 class="font-bold text-slate-900 text-sm mt-4">Mettre en œuvre</h4>
+                            <p class="text-slate-500 text-xs mt-1">Dédouanement et suivi du plan.</p>
+                        </button>
+
+                        <button onclick="activateStep(4)" id="stepBtn-4" class="relative z-10 flex flex-col items-center text-center group cursor-pointer">
+                            <div id="stepIcon-4" class="w-12 h-12 rounded-full bg-white border-2 border-slate-300 text-slate-600 font-bold text-sm flex items-center justify-center transition-transform group-hover:scale-110">
+                                04
+                            </div>
+                            <h4 class="font-bold text-slate-900 text-sm mt-4">Optimiser</h4>
+                            <p class="text-slate-500 text-xs mt-1">Ajustement et pérennisation.</p>
+                        </button>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: ILS NOUS FONT CONFIANCE -->
+    <section class="py-20 bg-[#070D1E] text-white reveal">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight">
+                    Ils nous font confiance
+                </h2>
+                <p class="text-slate-400 text-sm mt-2">Partenaires et acteurs économiques de la région.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-[#0F172A] border border-slate-800 rounded-3xl p-8 flex flex-col justify-between hover:border-brandBlue transition-colors">
+                    <div>
+                        <div class="text-brandBlue text-3xl font-serif mb-4">“</div>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                            Un accompagnement exemplaire pour toutes nos opérations de transit et de dédouanement au port de Lomé.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-slate-800">
+                        <span class="block font-bold text-white text-sm">Direction Générale</span>
+                        <span class="text-xs text-slate-400">Entreprise Industrielle</span>
+                    </div>
+                </div>
+
+                <div class="bg-[#0F172A] border border-slate-800 rounded-3xl p-8 flex flex-col justify-between hover:border-brandBlue transition-colors">
+                    <div>
+                        <div class="text-brandBlue text-3xl font-serif mb-4">“</div>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                            Une rigueur dans la gestion logistique et la manutention qui sécurise nos délais d'acheminement.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-slate-800">
+                        <span class="block font-bold text-white text-sm">Responsable des Opérations</span>
+                        <span class="text-xs text-slate-400">Services Professionnels</span>
+                    </div>
+                </div>
+
+                <div class="bg-[#0F172A] border border-slate-800 rounded-3xl p-8 flex flex-col justify-between hover:border-brandBlue transition-colors">
+                    <div>
+                        <div class="text-brandBlue text-3xl font-serif mb-4">“</div>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                            Grâce à leur expertise UPRAD et FIATA, nous avons clarifié notre stratégie et accéléré notre croissance.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-slate-800">
+                        <span class="block font-bold text-white text-sm">Fondateur</span>
+                        <span class="text-xs text-slate-400">Société Technologique & Commerce</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: À PROPOS & PROFIL COMPLET -->
+    <section id="apropos" class="py-24 bg-white reveal">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-7 space-y-6">
+                    <span class="text-brandBlue font-bold text-xs uppercase tracking-wider">DIRECTEUR & RESPONSABILITÉS</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                        SILIADIN Yaovi Blewoussi
+                    </h2>
+                    <p class="text-slate-700 font-bold text-base">
+                        Directeur de la société FRESEN-TRANS
+                    </p>
+
+                    <!-- Exact Verbatim List -->
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 space-y-3">
+                        <h4 class="font-extrabold text-slate-900 text-sm uppercase tracking-wider border-b border-slate-200 pb-2">Mandats & Qualités :</h4>
+                        <ul class="space-y-2.5 text-sm text-slate-700">
+                            <li class="flex items-start space-x-2.5">
+                                <span class="text-brandBlue font-bold mt-0.5">■</span>
+                                <span><strong>Commissionnaire en Douanes agréé</strong></span>
+                            </li>
+                            <li class="flex items-start space-x-2.5">
+                                <span class="text-brandBlue font-bold mt-0.5">■</span>
+                                <span><strong>Membre du Bureau Exécutif de l'UPRAD (secrétaire général adjoint)</strong> : Union Professionnelle des Agréés en Douane du Togo, qui est membre de la <strong>FIATA</strong>, Fédération Internationale des Associations de Transitaires et Assimilés.</span>
+                            </li>
+                            <li class="flex items-start space-x-2.5">
+                                <span class="text-brandBlue font-bold mt-0.5">■</span>
+                                <span><strong>Membre du CNF</strong> : Comité National de Facilitation des Transports.</span>
+                            </li>
+                            <li class="flex items-start space-x-2.5">
+                                <span class="text-brandBlue font-bold mt-0.5">■</span>
+                                <span><strong>Acteur du Comité Technique</strong> de facilitation des échanges et de la <strong>ZLECAF</strong>.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 space-y-3">
+                        <h4 class="font-extrabold text-slate-900 text-sm uppercase tracking-wider border-b border-slate-200 pb-2">Les Activités :</h4>
+                        <p class="text-xs font-bold text-brandBlue">Commissionnaire en Douane Agréé</p>
+                        <p class="text-xs font-bold text-slate-800">Spécialiste et conseiller en :</p>
+                        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-700 pt-1">
+                            <li class="flex items-center space-x-2 bg-white p-2.5 rounded-xl border border-slate-200">
+                                <i class="fa-solid fa-check text-brandBlue"></i>
+                                <span>Formalités de dédouanement (maritime, terrestre, aérien) — Transit & Négoce</span>
+                            </li>
+                            <li class="flex items-center space-x-2 bg-white p-2.5 rounded-xl border border-slate-200">
+                                <i class="fa-solid fa-check text-brandBlue"></i>
+                                <span>Transport et logistique</span>
+                            </li>
+                            <li class="flex items-center space-x-2 bg-white p-2.5 rounded-xl border border-slate-200">
+                                <i class="fa-solid fa-check text-brandBlue"></i>
+                                <span>Consignation</span>
+                            </li>
+                            <li class="flex items-center space-x-2 bg-white p-2.5 rounded-xl border border-slate-200">
+                                <i class="fa-solid fa-check text-brandBlue"></i>
+                                <span>Manutention</span>
+                            </li>
+                            <li class="flex items-center space-x-2 bg-white p-2.5 rounded-xl border border-slate-200">
+                                <i class="fa-solid fa-check text-brandBlue"></i>
+                                <span>Commerce général</span>
+                            </li>
+                            <li class="flex items-center space-x-2 bg-white p-2.5 rounded-xl border border-slate-200">
+                                <i class="fa-solid fa-check text-brandBlue"></i>
+                                <span>Formation</span>
+                            </li>
+                        </ul>
+                        <div class="pt-2">
+                            <span class="inline-block bg-brandLight text-brandBlue font-bold text-xs px-3 py-1.5 rounded-lg border border-blue-200">
+                                ■ Assistant en élaboration et Gestion de projets
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="w-full max-w-md bg-gradient-to-br from-slate-900 to-slate-800 text-white rounded-3xl p-8 shadow-2xl relative">
+                        <div class="text-center space-y-4">
+                            <div class="w-20 h-20 mx-auto rounded-2xl bg-brandBlue flex items-center justify-center text-3xl font-extrabold text-white shadow-lg">
+                                SYB
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-extrabold text-white">SILIADIN Yaovi Blewoussi</h3>
+                                <p class="text-xs text-cyan-400 font-semibold mt-1">Directeur FRESEN-TRANS • Secrétaire Général Adjoint UPRAD</p>
+                            </div>
+                            <blockquote class="text-xs text-slate-300 italic pt-4 border-t border-slate-700/80 leading-relaxed">
+                                "Faciliter les échanges, sécuriser vos marchandises et vous accompagner avec rigueur dans la gestion de vos projets."
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 7: PRÊT À ACCÉLÉRER VOTRE CROISSANCE ? -->
+    <section id="contact" class="py-20 bg-[#F4F6FB] reveal">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="bg-[#1E293B] rounded-3xl p-8 sm:p-12 shadow-2xl text-white">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    
+                    <div class="lg:col-span-7 space-y-4">
+                        <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight">
+                            Prêt à accélérer votre croissance ?
+                        </h2>
+                        <p class="text-slate-300 text-sm">
+                            Contactez-nous dès aujourd'hui pour échanger sur vos enjeux.
+                        </p>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4 text-[11px] text-slate-300">
+                            <div class="flex items-center space-x-2">
+                                <i class="fa-solid fa-circle-check text-brandBlue"></i>
+                                <span>Réponse rapide garantie</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <i class="fa-solid fa-lock text-brandBlue"></i>
+                                <span>Confidentialité totale</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <i class="fa-solid fa-user-gear text-brandBlue"></i>
+                                <span>Solutions adaptées</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-5">
+                        <form onsubmit="handleQuickContact(event)" class="space-y-3">
+                            <div class="bg-white rounded-full p-1.5 flex items-center shadow-lg">
+                                <input 
+                                    type="email" 
+                                    id="quickEmailInput"
+                                    required
+                                    placeholder="Votre e-mail professionnel" 
+                                    class="w-full px-4 text-xs text-slate-800 focus:outline-none font-medium placeholder-slate-400"
+                                >
+                                <button type="submit" class="px-6 py-3 rounded-full bg-brandBlue hover:bg-brandHover text-white font-bold text-xs uppercase tracking-wider shrink-0 shadow-md">
+                                    ÉCHANGER
+                                </button>
+                            </div>
+                            <p class="text-[11px] text-slate-400 text-center">
+                                Directement adressé à <strong>fresentrans@gmail.com</strong>
+                            </p>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Contact Box Info Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+                
+                <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 rounded-xl bg-blue-50 text-brandBlue flex items-center justify-center text-lg mb-4">
+                            <i class="fa-solid fa-building"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-sm mb-1">Siège STE FRESEN-TRANS SARL U</h4>
+                        <p class="text-xs text-slate-500 mb-2">67, Rue Kotokou Kondji, non loin du CEG d'Ablogamé</p>
+                        <p class="text-xs font-semibold text-brandBlue mb-3">B.P. : 20 309 Lomé - TOGO</p>
+                    </div>
+                    <div class="space-y-1 text-xs">
+                        <a href="tel:+22890286319" class="font-bold text-slate-800 hover:text-brandBlue block"><i class="fa-solid fa-phone text-brandBlue mr-1.5"></i>(+228) 90 28 63 19 / 98 11 95 75</a>
+                        <a href="mailto:fresentrans@gmail.com" class="font-medium text-slate-600 hover:text-brandBlue block"><i class="fa-solid fa-envelope text-brandBlue mr-1.5"></i>fresentrans@gmail.com</a>
+                    </div>
+                </div>
+
+                <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg mb-4">
+                            <i class="fa-solid fa-landmark"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-sm mb-1">Secrétariat UPRAD-TOGO</h4>
+                        <p class="text-xs text-slate-500 mb-2">Avenue Mobutu Sesse Seko (rue prolongée du grand moulin), Lomé - Togo</p>
+                        <a href="http://www.uprad-togo.com" target="_blank" class="text-xs font-semibold text-emerald-600 hover:underline block mb-3"><i class="fa-solid fa-globe mr-1"></i>www.uprad-togo.com</a>
+                    </div>
+                    <div class="space-y-1 text-xs">
+                        <a href="tel:+22890286319" class="font-bold text-slate-800 hover:text-emerald-600 block"><i class="fa-solid fa-phone text-emerald-600 mr-1.5"></i>(+228) 90 28 63 19 / 98 11 95 75</a>
+                        <a href="mailto:secretariatuprad@gmail.com" class="font-medium text-slate-600 hover:text-emerald-600 block"><i class="fa-solid fa-envelope text-emerald-600 mr-1.5"></i>secretariatuprad@gmail.com</a>
+                    </div>
+                </div>
+
+                <div class="bg-brandBlue text-white rounded-3xl p-6 shadow-lg flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-bold text-sm mb-1"><i class="fa-brands fa-whatsapp text-lg mr-2"></i> WhatsApp Direct</h4>
+                        <p class="text-xs text-blue-100 mb-2">Discuter instantanément avec M. SILIADIN Yaovi Blewoussi.</p>
+                        <p class="text-xs font-bold text-cyan-200 mb-4">(+228) 91 69 29 87</p>
+                    </div>
+                    <a href="https://wa.me/22891692987" target="_blank" class="w-full py-2.5 rounded-full bg-white text-brandBlue font-bold text-xs uppercase tracking-wider text-center shadow hover:bg-blue-50 transition-colors">
+                        Ouvrir WhatsApp
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-white py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center space-x-3">
+                <div class="w-9 h-9 rounded-full overflow-hidden border border-slate-700 bg-white flex items-center justify-center shrink-0">
+                    <img src="logo.jpg" alt="Logo STE FRESEN-TRANS" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bold text-xs text-slate-300">
+                    STE FRESEN-TRANS SARL U & UPRAD TOGO &copy; 2026. Tous droits réservés.
+                </span>
+            </div>
+            <div class="text-xs text-slate-400">
+                Yaovi Blewoussi SILIADIN • Directeur Général STE FRESEN-TRANS SARL U • Secrétaire Général Adjoint UPRAD-Togo
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE MODAL FOR QUOTATION -->
+    <div id="quoteModal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-slate-900/70 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-7 shadow-2xl relative border border-slate-100 animate-in fade-in zoom-in duration-200">
+            <button onclick="closeModal('quoteModal')" class="absolute top-5 right-5 text-slate-400 hover:text-slate-700 w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="flex items-center space-x-3 mb-4">
+                <div class="w-10 h-10 rounded-xl bg-brandBlue text-white flex items-center justify-center font-bold text-base">
+                    <i class="fa-solid fa-calculator"></i>
+                </div>
+                <div>
+                    <h3 class="font-extrabold text-slate-900 text-lg">Demander un Devis de Transit</h3>
+                    <p class="text-xs text-slate-500">Réponse sous 24 heures ouvrées</p>
+                </div>
+            </div>
+
+            <form onsubmit="handleModalForm(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold uppercase text-slate-700 mb-1">Nom complet / Entreprise</label>
+                    <input type="text" id="quoteName" name="name" required placeholder="Votre nom ou le nom de votre société" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs focus:ring-2 focus:ring-brandBlue focus:outline-none">
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-700 mb-1">Téléphone / WhatsApp</label>
+                        <input type="tel" id="quotePhone" name="phone" required placeholder="+228..." class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs focus:ring-2 focus:ring-brandBlue focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-700 mb-1">E-mail</label>
+                        <input type="email" id="quoteEmail" name="email" required placeholder="exemple@domaine.com" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs focus:ring-2 focus:ring-brandBlue focus:outline-none">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase text-slate-700 mb-1">Type d'opération</label>
+                    <select id="quoteOperation" name="operation" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs focus:ring-2 focus:ring-brandBlue focus:outline-none font-medium">
+                        <option>Dédouanement maritime / terrestre / aérien</option>
+                        <option>Transport et logistique</option>
+                        <option>Consignation / Manutention</option>
+                        <option>Commerce général</option>
+                        <option>Formation</option>
+                        <option>Élaboration et Gestion de projets</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase text-slate-700 mb-1">Description du besoin</label>
+                    <textarea id="quoteDetails" name="details" rows="3" placeholder="Précisez votre demande..." class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs focus:ring-2 focus:ring-brandBlue focus:outline-none"></textarea>
+                </div>
+                <div class="space-y-2 pt-2">
+                    <button type="submit" id="quoteSubmitBtn" class="w-full py-3.5 rounded-xl bg-brandBlue hover:bg-brandHover text-white font-extrabold text-xs uppercase tracking-wider shadow-lg shadow-brandBlue/30 transition-all flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        <span>Envoyer par Email (fresentrans@gmail.com)</span>
+                    </button>
+                    <button type="button" onclick="sendQuoteViaWhatsApp()" class="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs uppercase tracking-wider shadow-md transition-all flex items-center justify-center space-x-2">
+                        <i class="fa-brands fa-whatsapp text-sm"></i>
+                        <span>Envoyer directement via WhatsApp</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toastNotification" class="hidden fixed bottom-6 right-6 z-50 bg-slate-900 text-white px-6 py-4 rounded-2xl shadow-2xl border border-slate-800 flex items-center space-x-3">
+        <i class="fa-solid fa-circle-check text-emerald-400 text-xl"></i>
+        <div>
+            <h5 class="font-bold text-xs" id="toastTitle">Message envoyé !</h5>
+            <p class="text-[11px] text-slate-300" id="toastMessage">Nous reviendrons vers vous très rapidement.</p>
+        </div>
+    </div>
+
+    <script>
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu')?.classList.toggle('hidden');
+        }
+        document.getElementById('mobile-menu-btn')?.addEventListener('click', toggleMobileMenu);
+
+        function switchHeroCard(type) {
+            const cardFresen = document.getElementById('heroCardFresen');
+            const cardUprad = document.getElementById('heroCardUprad');
+            const tabFresen = document.getElementById('heroTabFresen');
+            const tabUprad = document.getElementById('heroTabUprad');
+
+            if(type === 'fresen') {
+                cardFresen.classList.remove('hidden');
+                cardUprad.classList.add('hidden');
+                tabFresen.className = "flex-1 py-2.5 px-3 rounded-xl font-bold text-xs transition-all bg-white text-brandBlue shadow-sm";
+                tabUprad.className = "flex-1 py-2.5 px-3 rounded-xl font-bold text-xs transition-all text-slate-600 hover:text-slate-900";
+            } else {
+                cardUprad.classList.remove('hidden');
+                cardFresen.classList.add('hidden');
+                tabUprad.className = "flex-1 py-2.5 px-3 rounded-xl font-bold text-xs transition-all bg-white text-emerald-700 shadow-sm";
+                tabFresen.className = "flex-1 py-2.5 px-3 rounded-xl font-bold text-xs transition-all text-slate-600 hover:text-slate-900";
+            }
+        }
+
+        const searchItems = [
+            { title: "Formalités de Dédouanement", subtitle: "Maritime, terrestre et aérien", link: "#expertises" },
+            { title: "Transport et Logistique", subtitle: "Flux, consignation et manutention", link: "#expertises" },
+            { title: "Assistant Élaboration & Gestion de projets", subtitle: "Conseil & pilotage stratégique", link: "#apropos" },
+            { title: "UPRAD Togo & FIATA", subtitle: "Union Professionnelle des Agréés en Douane", link: "#mandats" },
+            { title: "CNF & ZLECAF", subtitle: "Comité National de Facilitation des Transports", link: "#mandats" },
+            { title: "Commerce général & Formation", subtitle: "Prestations et accompagnement", link: "#expertises" }
+        ];
+
+        function handleSearch(val) {
+            const dropdown = document.getElementById('searchDropdown');
+            if(!val.trim()) {
+                dropdown.classList.add('hidden');
+                return;
+            }
+
+            const matches = searchItems.filter(item => 
+                item.title.toLowerCase().includes(val.toLowerCase()) || 
+                item.subtitle.toLowerCase().includes(val.toLowerCase())
+            );
+
+            if(matches.length === 0) {
+                dropdown.innerHTML = `<div class="p-3 text-xs text-slate-400 text-center">Aucun résultat trouvé pour "${val}"</div>`;
+            } else {
+                dropdown.innerHTML = matches.map(item => `
+                    <div onclick="selectSearchResult('${item.link || ''}')" class="p-3 hover:bg-blue-50/80 rounded-xl cursor-pointer transition-colors flex items-center justify-between">
+                        <div>
+                            <div class="font-bold text-slate-900 text-xs">${item.title}</div>
+                            <div class="text-[11px] text-slate-500">${item.subtitle}</div>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-xs text-slate-400"></i>
+                    </div>
+                `).join('');
+            }
+            dropdown.classList.remove('hidden');
+        }
+
+        function selectSearchResult(link) {
+            document.getElementById('searchDropdown').classList.add('hidden');
+            if(link) {
+                document.querySelector(link)?.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function executeHeroSearch() {
+            openModal('quoteModal');
+        }
+
+        document.addEventListener('click', (e) => {
+            if(!e.target.closest('#heroSearchInput') && !e.target.closest('#searchDropdown')) {
+                document.getElementById('searchDropdown')?.classList.add('hidden');
+            }
+        });
+
+        const stepData = {
+            1: { title: "Comprendre", description: "Analyse complète de vos enjeux et contexte logistique et douanier.", badge: "01" },
+            2: { title: "Concevoir", description: "Élaboration d'une stratégie sur mesure pragmatique et réaliste.", badge: "02" },
+            3: { title: "Mettre en œuvre", description: "Exécution des formalités de dédouanement et accompagnement du plan.", badge: "03" },
+            4: { title: "Optimiser", description: "Ajustement continu et pérennisation des résultats.", badge: "04" }
+        };
+
+        function activateStep(stepNum) {
+            const data = stepData[stepNum];
+            document.getElementById('stepNumberBadge').innerText = data.badge;
+            document.getElementById('stepTitle').innerText = data.title;
+            document.getElementById('stepDescription').innerText = data.description;
+
+            for(let i = 1; i <= 4; i++) {
+                const icon = document.getElementById(`stepIcon-${i}`);
+                if(i === stepNum) {
+                    icon.className = "w-12 h-12 rounded-full bg-brandBlue text-white font-bold text-sm flex items-center justify-center shadow-lg shadow-brandBlue/30 transition-transform group-hover:scale-110";
+                } else {
+                    icon.className = "w-12 h-12 rounded-full bg-white border-2 border-slate-300 text-slate-600 font-bold text-sm flex items-center justify-center transition-transform group-hover:scale-110";
+                }
+            }
+        }
+
+        function openModal(id) { document.getElementById(id)?.classList.remove('hidden'); }
+        function closeModal(id) { document.getElementById(id)?.classList.add('hidden'); }
+
+        async function handleModalForm(e) {
+            e.preventDefault();
+            const btn = document.getElementById('quoteSubmitBtn');
+            const originalBtnText = btn.innerHTML;
+            
+            const name = document.getElementById('quoteName').value;
+            const phone = document.getElementById('quotePhone').value;
+            const email = document.getElementById('quoteEmail').value;
+            const operation = document.getElementById('quoteOperation').value;
+            const details = document.getElementById('quoteDetails').value;
+
+            btn.disabled = true;
+            btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> <span>Envoi en cours...</span>`;
+
+            try {
+                const response = await fetch("https://formsubmit.co/ajax/fresentrans@gmail.com", {
+                    method: "POST",
+                    headers: { 
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
+                    },
+                    body: JSON.stringify({
+                        _subject: `Demande de Devis FRESEN-TRANS: ${name}`,
+                        "Nom / Entreprise": name,
+                        "Téléphone / WhatsApp": phone,
+                        "E-mail": email,
+                        "Type d'opération": operation,
+                        "Description du besoin": details || "Non spécifiée"
+                    })
+                });
+
+                if (response.ok) {
+                    closeModal('quoteModal');
+                    showToast("Demande de devis transmise !", `Votre message a été transmis à fresentrans@gmail.com. Réponse sous 24h.`);
+                    e.target.reset();
+                } else {
+                    throw new Error("Erreur de transmission");
+                }
+            } catch (err) {
+                showToast("Redirection WhatsApp", "Préparation de votre devis sur WhatsApp...");
+                setTimeout(() => { sendQuoteViaWhatsApp(); }, 1000);
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = originalBtnText;
+            }
+        }
+
+        function sendQuoteViaWhatsApp() {
+            const name = document.getElementById('quoteName')?.value || 'Client';
+            const phone = document.getElementById('quotePhone')?.value || 'Non renseigné';
+            const email = document.getElementById('quoteEmail')?.value || 'Non renseigné';
+            const operation = document.getElementById('quoteOperation')?.value || 'Transit & Logistique';
+            const details = document.getElementById('quoteDetails')?.value || 'Aucun détail précisé';
+
+            const message = `Bonjour M. SILIADIN Yaovi Blewoussi,\n\nJe souhaite demander un devis FRESEN-TRANS :\n- *Nom / Entreprise* : ${name}\n- *Téléphone* : ${phone}\n- *Email* : ${email}\n- *Opération* : ${operation}\n- *Détails* : ${details}`;
+            
+            const waUrl = `https://wa.me/22891692987?text=${encodeURIComponent(message)}`;
+            window.open(waUrl, '_blank');
+            closeModal('quoteModal');
+            showToast("WhatsApp ouvert !", "Votre message de devis pré-rempli est prêt à être envoyé.");
+        }
+
+        async function handleQuickContact(e) {
+            e.preventDefault();
+            const input = document.getElementById('quickEmailInput');
+            const email = input.value;
+            if(!email) return;
+
+            showToast("Envoi en cours...", "Transmission de votre e-mail...");
+
+            try {
+                await fetch("https://formsubmit.co/ajax/fresentrans@gmail.com", {
+                    method: "POST",
+                    headers: { 
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
+                    },
+                    body: JSON.stringify({
+                        _subject: "Nouveau contact rapide - Site FRESEN-TRANS",
+                        "E-mail du prospect": email
+                    })
+                });
+                showToast("Message transmis !", `Nous vous recontacterons très vite à l'adresse ${email}.`);
+                input.value = '';
+            } catch (err) {
+                showToast("Merci !", `Votre contact ${email} à bien été pris en compte.`);
+                input.value = '';
+            }
+        }
+
+        function showToast(title, msg) {
+            const toast = document.getElementById('toastNotification');
+            document.getElementById('toastTitle').innerText = title;
+            document.getElementById('toastMessage').innerText = msg;
+            toast.classList.remove('hidden');
+            setTimeout(() => { toast.classList.add('hidden'); }, 4000);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('active');
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
